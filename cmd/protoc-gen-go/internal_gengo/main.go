@@ -16,15 +16,17 @@ import (
 	"unicode"
 	"unicode/utf8"
 
+	"github.com/go-fox/fox/api/annotations"
+
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/internal/editionssupport"
 	"google.golang.org/protobuf/internal/encoding/tag"
 	"google.golang.org/protobuf/internal/filedesc"
 	"google.golang.org/protobuf/internal/genid"
 	"google.golang.org/protobuf/internal/version"
+	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/runtime/protoimpl"
-
 	"google.golang.org/protobuf/types/descriptorpb"
 	"google.golang.org/protobuf/types/pluginpb"
 )
@@ -433,8 +435,29 @@ func genMessageField(g *protogen.GeneratedFile, f *fileInfo, m *messageInfo, fie
 	}
 	tags := structTags{
 		{"protobuf", fieldProtobufTagValue(field)},
-		{"json", fieldJSONTagValue(field)},
 	}
+
+	s, ok := proto.GetExtension(field.Desc.Options(), annotations.E_Form).(string)
+	if ok && len(s) > 0 {
+		tags = append(tags, [2]string{"form", s})
+	}
+	s, ok = proto.GetExtension(field.Desc.Options(), annotations.E_Query).(string)
+	if ok && len(s) > 0 {
+		tags = append(tags, [2]string{"query", s})
+	}
+	s, ok = proto.GetExtension(field.Desc.Options(), annotations.E_Header).(string)
+	if ok && len(s) > 0 {
+		tags = append(tags, [2]string{"header", s})
+	}
+	s, ok = proto.GetExtension(field.Desc.Options(), annotations.E_Path).(string)
+	if ok && len(s) > 0 {
+		tags = append(tags, [2]string{"header", s})
+	}
+	s, ok = proto.GetExtension(field.Desc.Options(), annotations.E_Json).(string)
+	if ok && len(s) > 0 {
+		tags = append(tags, [2]string{"json", fieldJSONTagValue(field)})
+	}
+
 	if field.Desc.IsMap() {
 		key := field.Message.Fields[0]
 		val := field.Message.Fields[1]

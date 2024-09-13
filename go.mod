@@ -1,10 +1,9 @@
 module google.golang.org/protobuf
 
-go 1.21
+go 1.22.1
 
 require (
-	github.com/golang/protobuf v1.5.0
-	github.com/google/go-cmp v0.5.5
+	github.com/go-fox/fox v0.0.0-20240911041716-918b71cb3969
+	github.com/golang/protobuf v1.5.4
+	github.com/google/go-cmp v0.6.0
 )
-
-require golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543 // indirect
