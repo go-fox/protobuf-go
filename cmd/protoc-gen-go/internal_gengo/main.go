@@ -435,6 +435,7 @@ func genMessageField(g *protogen.GeneratedFile, f *fileInfo, m *messageInfo, fie
 	}
 	tags := structTags{
 		{"protobuf", fieldProtobufTagValue(field)},
+		{"json", fieldJSONTagValue(field)},
 	}
 
 	s, ok := proto.GetExtension(field.Desc.Options(), annotations.E_Form).(string)
@@ -452,10 +453,6 @@ func genMessageField(g *protogen.GeneratedFile, f *fileInfo, m *messageInfo, fie
 	s, ok = proto.GetExtension(field.Desc.Options(), annotations.E_Path).(string)
 	if ok && len(s) > 0 {
 		tags = append(tags, [2]string{"header", s})
-	}
-	s, ok = proto.GetExtension(field.Desc.Options(), annotations.E_Json).(string)
-	if ok && len(s) > 0 {
-		tags = append(tags, [2]string{"json", fieldJSONTagValue(field)})
 	}
 
 	if field.Desc.IsMap() {
