@@ -452,7 +452,7 @@ func genMessageField(g *protogen.GeneratedFile, f *fileInfo, m *messageInfo, fie
 	}
 	s, ok = proto.GetExtension(field.Desc.Options(), annotations.E_Path).(string)
 	if ok && len(s) > 0 {
-		tags = append(tags, [2]string{"header", s})
+		tags = append(tags, [2]string{"path", s})
 	}
 
 	if field.Desc.IsMap() {
