@@ -3,7 +3,7 @@ module google.golang.org/protobuf
 go 1.22.1
 
 require (
-	github.com/go-fox/fox v0.0.0-20241008100327-50a850cf9b5b
+	github.com/go-fox/fox v0.0.0-20250210143009-df3a88f5f826
 	github.com/golang/protobuf v1.5.4
 	github.com/google/go-cmp v0.6.0
 )
