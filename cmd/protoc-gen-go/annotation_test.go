@@ -9,9 +9,9 @@ import (
 	"os"
 	"testing"
 
+	"github.com/go-fox/protobuf-go/internal/genid"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/prototext"
-	"google.golang.org/protobuf/internal/genid"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/testing/protocmp"
 

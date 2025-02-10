@@ -1,4 +1,4 @@
-module google.golang.org/protobuf
+module github.com/go-fox/protobuf-go
 
 go 1.22.1
 

@@ -8,8 +8,8 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/go-fox/protobuf-go/internal/genid"
 	"google.golang.org/protobuf/compiler/protogen"
-	"google.golang.org/protobuf/internal/genid"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protodesc"
 	descpb "google.golang.org/protobuf/types/descriptorpb"
