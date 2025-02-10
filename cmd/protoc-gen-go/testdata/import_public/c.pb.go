@@ -13,18 +13,18 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+	unsafe "unsafe"
 )
 
 type UsingPublicImport struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
+	state protoimpl.MessageState `protogen:"open.v1"`
 	// Local is declared in b.proto, which is a public import of a.proto.
 	Local *Local `protobuf:"bytes,1,opt,name=local" json:"local,omitempty"`
 	// Sub2Message is declared in sub2/a.proto, which is a public import of
 	// sub/a.proto, which is a public import of a.proto.
-	Sub2 *sub2.Sub2Message `protobuf:"bytes,2,opt,name=sub2" json:"sub2,omitempty"` // declared in sub2/a.proto
+	Sub2          *sub2.Sub2Message `protobuf:"bytes,2,opt,name=sub2" json:"sub2,omitempty"` // declared in sub2/a.proto
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UsingPublicImport) Reset() {
@@ -73,7 +73,7 @@ func (x *UsingPublicImport) GetSub2() *sub2.Sub2Message {
 
 var File_cmd_protoc_gen_go_testdata_import_public_c_proto protoreflect.FileDescriptor
 
-var file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDesc = []byte{
+var file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDesc = string([]byte{
 	0x0a, 0x30, 0x63, 0x6d, 0x64, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x2d, 0x67, 0x65, 0x6e,
 	0x2d, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x64, 0x61, 0x74, 0x61, 0x2f, 0x69, 0x6d, 0x70,
 	0x6f, 0x72, 0x74, 0x5f, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x2f, 0x63, 0x2e, 0x70, 0x72, 0x6f,
@@ -96,16 +96,16 @@ var file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDesc = []byte{
 	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x63, 0x6d, 0x64, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63,
 	0x2d, 0x67, 0x65, 0x6e, 0x2d, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x64, 0x61, 0x74, 0x61,
 	0x2f, 0x69, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x5f, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63,
-}
+})
 
 var (
 	file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDescOnce sync.Once
-	file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDescData = file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDesc
+	file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDescData []byte
 )
 
 func file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDescGZIP() []byte {
 	file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDescOnce.Do(func() {
-		file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDescData = protoimpl.X.CompressGZIP(file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDescData)
+		file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDesc), len(file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDesc)))
 	})
 	return file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDescData
 }
@@ -136,7 +136,7 @@ func file_cmd_protoc_gen_go_testdata_import_public_c_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDesc), len(file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
@@ -147,7 +147,6 @@ func file_cmd_protoc_gen_go_testdata_import_public_c_proto_init() {
 		MessageInfos:      file_cmd_protoc_gen_go_testdata_import_public_c_proto_msgTypes,
 	}.Build()
 	File_cmd_protoc_gen_go_testdata_import_public_c_proto = out.File
-	file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDesc = nil
 	file_cmd_protoc_gen_go_testdata_import_public_c_proto_goTypes = nil
 	file_cmd_protoc_gen_go_testdata_import_public_c_proto_depIdxs = nil
 }

@@ -14,6 +14,7 @@ import (
 	math "math"
 	reflect "reflect"
 	sync "sync"
+	unsafe "unsafe"
 )
 
 // Symbols defined in public import of cmd/protoc-gen-go/testdata/import_public/sub2/a.proto.
@@ -180,21 +181,20 @@ func (M_Submessage_Submessage_Subenum) EnumDescriptor() ([]byte, []int) {
 }
 
 type M struct {
-	state           protoimpl.MessageState
-	sizeCache       protoimpl.SizeCache
-	unknownFields   protoimpl.UnknownFields
-	extensionFields protoimpl.ExtensionFields
-
+	state protoimpl.MessageState `protogen:"open.v1"`
 	// Field using a type in the same Go package, but a different source file.
 	M2 *M2      `protobuf:"bytes,1,opt,name=m2" json:"m2,omitempty"`
 	S  *string  `protobuf:"bytes,4,opt,name=s,def=default" json:"s,omitempty"`
 	B  []byte   `protobuf:"bytes,5,opt,name=b,def=default" json:"b,omitempty"`
 	F  *float64 `protobuf:"fixed64,6,opt,name=f,def=nan" json:"f,omitempty"`
-	// Types that are assignable to OneofField:
+	// Types that are valid to be assigned to OneofField:
 	//
 	//	*M_OneofInt32
 	//	*M_OneofInt64
-	OneofField isM_OneofField `protobuf_oneof:"oneof_field"`
+	OneofField      isM_OneofField `protobuf_oneof:"oneof_field"`
+	extensionFields protoimpl.ExtensionFields
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 // Default values for M fields.
@@ -266,23 +266,27 @@ func (x *M) GetF() float64 {
 	return Default_M_F
 }
 
-func (m *M) GetOneofField() isM_OneofField {
-	if m != nil {
-		return m.OneofField
+func (x *M) GetOneofField() isM_OneofField {
+	if x != nil {
+		return x.OneofField
 	}
 	return nil
 }
 
 func (x *M) GetOneofInt32() int32 {
-	if x, ok := x.GetOneofField().(*M_OneofInt32); ok {
-		return x.OneofInt32
+	if x != nil {
+		if x, ok := x.OneofField.(*M_OneofInt32); ok {
+			return x.OneofInt32
+		}
 	}
 	return 0
 }
 
 func (x *M) GetOneofInt64() int64 {
-	if x, ok := x.GetOneofField().(*M_OneofInt64); ok {
-		return x.OneofInt64
+	if x != nil {
+		if x, ok := x.OneofField.(*M_OneofInt64); ok {
+			return x.OneofInt64
+		}
 	}
 	return 0
 }
@@ -304,15 +308,14 @@ func (*M_OneofInt32) isM_OneofField() {}
 func (*M_OneofInt64) isM_OneofField() {}
 
 type M_Submessage struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// Types that are assignable to SubmessageOneofField:
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to SubmessageOneofField:
 	//
 	//	*M_Submessage_SubmessageOneofInt32
 	//	*M_Submessage_SubmessageOneofInt64
 	SubmessageOneofField isM_Submessage_SubmessageOneofField `protobuf_oneof:"submessage_oneof_field"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
 }
 
 func (x *M_Submessage) Reset() {
@@ -345,23 +348,27 @@ func (*M_Submessage) Descriptor() ([]byte, []int) {
 	return file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDescGZIP(), []int{0, 0}
 }
 
-func (m *M_Submessage) GetSubmessageOneofField() isM_Submessage_SubmessageOneofField {
-	if m != nil {
-		return m.SubmessageOneofField
+func (x *M_Submessage) GetSubmessageOneofField() isM_Submessage_SubmessageOneofField {
+	if x != nil {
+		return x.SubmessageOneofField
 	}
 	return nil
 }
 
 func (x *M_Submessage) GetSubmessageOneofInt32() int32 {
-	if x, ok := x.GetSubmessageOneofField().(*M_Submessage_SubmessageOneofInt32); ok {
-		return x.SubmessageOneofInt32
+	if x != nil {
+		if x, ok := x.SubmessageOneofField.(*M_Submessage_SubmessageOneofInt32); ok {
+			return x.SubmessageOneofInt32
+		}
 	}
 	return 0
 }
 
 func (x *M_Submessage) GetSubmessageOneofInt64() int64 {
-	if x, ok := x.GetSubmessageOneofField().(*M_Submessage_SubmessageOneofInt64); ok {
-		return x.SubmessageOneofInt64
+	if x != nil {
+		if x, ok := x.SubmessageOneofField.(*M_Submessage_SubmessageOneofInt64); ok {
+			return x.SubmessageOneofInt64
+		}
 	}
 	return 0
 }
@@ -401,7 +408,7 @@ var (
 
 var File_cmd_protoc_gen_go_testdata_import_public_sub_a_proto protoreflect.FileDescriptor
 
-var file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDesc = []byte{
+var file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDesc = string([]byte{
 	0x0a, 0x34, 0x63, 0x6d, 0x64, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x2d, 0x67, 0x65, 0x6e,
 	0x2d, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x64, 0x61, 0x74, 0x61, 0x2f, 0x69, 0x6d, 0x70,
 	0x6f, 0x72, 0x74, 0x5f, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x2f, 0x73, 0x75, 0x62, 0x2f, 0x61,
@@ -453,16 +460,16 @@ var file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDesc = []byte{
 	0x6f, 0x74, 0x6f, 0x63, 0x2d, 0x67, 0x65, 0x6e, 0x2d, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74,
 	0x64, 0x61, 0x74, 0x61, 0x2f, 0x69, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x5f, 0x70, 0x75, 0x62, 0x6c,
 	0x69, 0x63, 0x2f, 0x73, 0x75, 0x62, 0x50, 0x00,
-}
+})
 
 var (
 	file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDescOnce sync.Once
-	file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDescData = file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDesc
+	file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDescData []byte
 )
 
 func file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDescGZIP() []byte {
 	file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDescOnce.Do(func() {
-		file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDescData = protoimpl.X.CompressGZIP(file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDescData)
+		file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDesc), len(file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDesc)))
 	})
 	return file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDescData
 }
@@ -505,7 +512,7 @@ func file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDesc), len(file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDesc)),
 			NumEnums:      3,
 			NumMessages:   2,
 			NumExtensions: 1,
@@ -518,7 +525,6 @@ func file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_init() {
 		ExtensionInfos:    file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_extTypes,
 	}.Build()
 	File_cmd_protoc_gen_go_testdata_import_public_sub_a_proto = out.File
-	file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_rawDesc = nil
 	file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_goTypes = nil
 	file_cmd_protoc_gen_go_testdata_import_public_sub_a_proto_depIdxs = nil
 }

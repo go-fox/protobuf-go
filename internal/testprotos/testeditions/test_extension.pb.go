@@ -12,13 +12,14 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+	unsafe "unsafe"
 )
 
 type TestAllExtensions struct {
-	state           protoimpl.MessageState
-	sizeCache       protoimpl.SizeCache
-	unknownFields   protoimpl.UnknownFields
+	state           protoimpl.MessageState `protogen:"open.v1"`
 	extensionFields protoimpl.ExtensionFields
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *TestAllExtensions) Reset() {
@@ -52,13 +53,12 @@ func (*TestAllExtensions) Descriptor() ([]byte, []int) {
 }
 
 type OptionalGroup struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
+	state                 protoimpl.MessageState           `protogen:"open.v1"`
 	A                     *int32                           `protobuf:"varint,17,opt,name=a" json:"a,omitempty"`
 	SameFieldNumber       *int32                           `protobuf:"varint,16,opt,name=same_field_number,json=sameFieldNumber" json:"same_field_number,omitempty"`
 	OptionalNestedMessage *TestAllExtensions_NestedMessage `protobuf:"bytes,1000,opt,name=optional_nested_message,json=optionalNestedMessage" json:"optional_nested_message,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *OptionalGroup) Reset() {
@@ -113,12 +113,11 @@ func (x *OptionalGroup) GetOptionalNestedMessage() *TestAllExtensions_NestedMess
 }
 
 type RepeatedGroup struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
+	state                 protoimpl.MessageState           `protogen:"open.v1"`
 	A                     *int32                           `protobuf:"varint,47,opt,name=a" json:"a,omitempty"`
 	OptionalNestedMessage *TestAllExtensions_NestedMessage `protobuf:"bytes,1001,opt,name=optional_nested_message,json=optionalNestedMessage" json:"optional_nested_message,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *RepeatedGroup) Reset() {
@@ -166,10 +165,10 @@ func (x *RepeatedGroup) GetOptionalNestedMessage() *TestAllExtensions_NestedMess
 }
 
 type TestFeatureResolution struct {
-	state           protoimpl.MessageState
-	sizeCache       protoimpl.SizeCache
-	unknownFields   protoimpl.UnknownFields
+	state           protoimpl.MessageState `protogen:"open.v1"`
 	extensionFields protoimpl.ExtensionFields
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *TestFeatureResolution) Reset() {
@@ -203,9 +202,9 @@ func (*TestFeatureResolution) Descriptor() ([]byte, []int) {
 }
 
 type RepeatedFieldEncoding struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RepeatedFieldEncoding) Reset() {
@@ -239,12 +238,11 @@ func (*RepeatedFieldEncoding) Descriptor() ([]byte, []int) {
 }
 
 type TestAllExtensions_NestedMessage struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	A             *int32                 `protobuf:"varint,1,opt,name=a" json:"a,omitempty"`
+	Corecursive   *TestAllExtensions     `protobuf:"bytes,2,opt,name=corecursive" json:"corecursive,omitempty"`
 	unknownFields protoimpl.UnknownFields
-
-	A           *int32             `protobuf:"varint,1,opt,name=a" json:"a,omitempty"`
-	Corecursive *TestAllExtensions `protobuf:"bytes,2,opt,name=corecursive" json:"corecursive,omitempty"`
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *TestAllExtensions_NestedMessage) Reset() {
@@ -874,7 +872,7 @@ var (
 
 var File_internal_testprotos_testeditions_test_extension_proto protoreflect.FileDescriptor
 
-var file_internal_testprotos_testeditions_test_extension_proto_rawDesc = []byte{
+var file_internal_testprotos_testeditions_test_extension_proto_rawDesc = string([]byte{
 	0x0a, 0x35, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f,
 	0x6e, 0x73, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x65, 0x78, 0x74, 0x65, 0x6e, 0x73, 0x69, 0x6f,
@@ -1275,16 +1273,16 @@ var file_internal_testprotos_testeditions_test_extension_proto_rawDesc = []byte{
 	0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e,
 	0x73, 0x92, 0x03, 0x04, 0x18, 0x02, 0x20, 0x03, 0x62, 0x08, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f,
 	0x6e, 0x73, 0x70, 0xe8, 0x07,
-}
+})
 
 var (
 	file_internal_testprotos_testeditions_test_extension_proto_rawDescOnce sync.Once
-	file_internal_testprotos_testeditions_test_extension_proto_rawDescData = file_internal_testprotos_testeditions_test_extension_proto_rawDesc
+	file_internal_testprotos_testeditions_test_extension_proto_rawDescData []byte
 )
 
 func file_internal_testprotos_testeditions_test_extension_proto_rawDescGZIP() []byte {
 	file_internal_testprotos_testeditions_test_extension_proto_rawDescOnce.Do(func() {
-		file_internal_testprotos_testeditions_test_extension_proto_rawDescData = protoimpl.X.CompressGZIP(file_internal_testprotos_testeditions_test_extension_proto_rawDescData)
+		file_internal_testprotos_testeditions_test_extension_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_internal_testprotos_testeditions_test_extension_proto_rawDesc), len(file_internal_testprotos_testeditions_test_extension_proto_rawDesc)))
 	})
 	return file_internal_testprotos_testeditions_test_extension_proto_rawDescData
 }
@@ -1386,7 +1384,7 @@ func file_internal_testprotos_testeditions_test_extension_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_internal_testprotos_testeditions_test_extension_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_testprotos_testeditions_test_extension_proto_rawDesc), len(file_internal_testprotos_testeditions_test_extension_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 57,
@@ -1398,7 +1396,6 @@ func file_internal_testprotos_testeditions_test_extension_proto_init() {
 		ExtensionInfos:    file_internal_testprotos_testeditions_test_extension_proto_extTypes,
 	}.Build()
 	File_internal_testprotos_testeditions_test_extension_proto = out.File
-	file_internal_testprotos_testeditions_test_extension_proto_rawDesc = nil
 	file_internal_testprotos_testeditions_test_extension_proto_goTypes = nil
 	file_internal_testprotos_testeditions_test_extension_proto_depIdxs = nil
 }

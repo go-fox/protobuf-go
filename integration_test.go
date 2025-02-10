@@ -33,7 +33,7 @@ var (
 	regenerate   = flag.Bool("regenerate", false, "regenerate files")
 	buildRelease = flag.Bool("buildRelease", false, "build release binaries")
 
-	protobufVersion = "27.0"
+	protobufVersion = "29.1"
 
 	golangVersions = func() []string {
 		// Version policy: oldest supported version of Go, plus the version before that.
@@ -116,6 +116,17 @@ func TestIntegration(t *testing.T) {
 			t.Fatalf("unformatted source files:\n%v", diff)
 		}
 	})
+	t.Run("GeneratedVet", func(t *testing.T) {
+		files := strings.Split(strings.TrimSpace(mustRunCommand(t, "go", "list", "./internal/testprotos/...")), "\n")
+		filtered := make([]string, 0, len(files))
+		for _, f := range files {
+			if strings.Contains(f, "/legacy/") {
+				continue
+			}
+			filtered = append(filtered, f)
+		}
+		mustRunCommand(t, append([]string{"go", "vet"}, filtered...)...)
+	})
 	t.Run("CopyrightHeaders", func(t *testing.T) {
 		files := strings.Split(strings.TrimSpace(mustRunCommand(t, "git", "ls-files", "*.go", "*.proto")), "\n")
 		mustHaveCopyrightHeader(t, files)
@@ -140,6 +151,7 @@ func TestIntegration(t *testing.T) {
 		}
 
 		runGo("Normal", command{}, "go", "test", "-race", "./...")
+		runGo("LazyDecoding", command{}, "go", "test", "./proto", "-test_lazy_unmarshal")
 		runGo("Reflect", command{}, "go", "test", "-race", "-tags", "protoreflect", "./...")
 		if goVersion == golangLatest {
 			runGo("ProtoLegacyRace", command{}, "go", "test", "-race", "-tags", "protolegacy", "./...")

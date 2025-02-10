@@ -14,6 +14,7 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+	unsafe "unsafe"
 )
 
 // COMMENT: Enum1.Leading
@@ -77,19 +78,18 @@ func (Enum1) EnumDescriptor() ([]byte, []int) {
 
 // COMMENT: Message1.Leading
 type Message1 struct {
-	state           protoimpl.MessageState
-	sizeCache       protoimpl.SizeCache
-	unknownFields   protoimpl.UnknownFields
-	extensionFields protoimpl.ExtensionFields
-
+	state protoimpl.MessageState `protogen:"open.v1"`
 	// COMMENT: Field1A.Leading
 	Field1A *string `protobuf:"bytes,1,opt,name=Field1A" json:"Field1A,omitempty"` // COMMENT: Field1A.Trailing
 	// COMMENT: Oneof1A.Leading
 	//
-	// Types that are assignable to Oneof1A:
+	// Types that are valid to be assigned to Oneof1A:
 	//
 	//	*Message1_Oneof1AField1
-	Oneof1A isMessage1_Oneof1A `protobuf_oneof:"Oneof1a"`
+	Oneof1A         isMessage1_Oneof1A `protobuf_oneof:"Oneof1a"`
+	extensionFields protoimpl.ExtensionFields
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *Message1) Reset() {
@@ -129,16 +129,18 @@ func (x *Message1) GetField1A() string {
 	return ""
 }
 
-func (m *Message1) GetOneof1A() isMessage1_Oneof1A {
-	if m != nil {
-		return m.Oneof1A
+func (x *Message1) GetOneof1A() isMessage1_Oneof1A {
+	if x != nil {
+		return x.Oneof1A
 	}
 	return nil
 }
 
 func (x *Message1) GetOneof1AField1() string {
-	if x, ok := x.GetOneof1A().(*Message1_Oneof1AField1); ok {
-		return x.Oneof1AField1
+	if x != nil {
+		if x, ok := x.Oneof1A.(*Message1_Oneof1AField1); ok {
+			return x.Oneof1AField1
+		}
 	}
 	return ""
 }
@@ -156,9 +158,9 @@ func (*Message1_Oneof1AField1) isMessage1_Oneof1A() {}
 
 // COMMENT: Message2
 type Message2 struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Message2) Reset() {
@@ -193,9 +195,9 @@ func (*Message2) Descriptor() ([]byte, []int) {
 
 // COMMENT: Message1A.Leading
 type Message1_Message1A struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Message1_Message1A) Reset() {
@@ -230,9 +232,9 @@ func (*Message1_Message1A) Descriptor() ([]byte, []int) {
 
 // COMMENT: Message1B
 type Message1_Message1B struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Message1_Message1B) Reset() {
@@ -267,9 +269,9 @@ func (*Message1_Message1B) Descriptor() ([]byte, []int) {
 
 // COMMENT: Message2A
 type Message2_Message2A struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Message2_Message2A) Reset() {
@@ -304,9 +306,9 @@ func (*Message2_Message2A) Descriptor() ([]byte, []int) {
 
 // COMMENT: Message2B
 type Message2_Message2B struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Message2_Message2B) Reset() {
@@ -360,7 +362,7 @@ var (
 
 var File_cmd_protoc_gen_go_testdata_comments_comments_proto protoreflect.FileDescriptor
 
-var file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDesc = []byte{
+var file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDesc = string([]byte{
 	0x0a, 0x32, 0x63, 0x6d, 0x64, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x2d, 0x67, 0x65, 0x6e,
 	0x2d, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x64, 0x61, 0x74, 0x61, 0x2f, 0x63, 0x6f, 0x6d,
 	0x6d, 0x65, 0x6e, 0x74, 0x73, 0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x2e, 0x70,
@@ -389,16 +391,16 @@ var file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDesc = []byte{
 	0x64, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x2d, 0x67, 0x65, 0x6e, 0x2d, 0x67, 0x6f, 0x2f,
 	0x74, 0x65, 0x73, 0x74, 0x64, 0x61, 0x74, 0x61, 0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74,
 	0x73,
-}
+})
 
 var (
 	file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDescOnce sync.Once
-	file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDescData = file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDesc
+	file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDescData []byte
 )
 
 func file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDescGZIP() []byte {
 	file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDescOnce.Do(func() {
-		file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDescData = protoimpl.X.CompressGZIP(file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDescData)
+		file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDesc), len(file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDesc)))
 	})
 	return file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDescData
 }
@@ -436,7 +438,7 @@ func file_cmd_protoc_gen_go_testdata_comments_comments_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDesc), len(file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDesc)),
 			NumEnums:      1,
 			NumMessages:   6,
 			NumExtensions: 1,
@@ -449,7 +451,6 @@ func file_cmd_protoc_gen_go_testdata_comments_comments_proto_init() {
 		ExtensionInfos:    file_cmd_protoc_gen_go_testdata_comments_comments_proto_extTypes,
 	}.Build()
 	File_cmd_protoc_gen_go_testdata_comments_comments_proto = out.File
-	file_cmd_protoc_gen_go_testdata_comments_comments_proto_rawDesc = nil
 	file_cmd_protoc_gen_go_testdata_comments_comments_proto_goTypes = nil
 	file_cmd_protoc_gen_go_testdata_comments_comments_proto_depIdxs = nil
 }

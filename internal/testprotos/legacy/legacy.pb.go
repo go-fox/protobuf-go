@@ -24,25 +24,25 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+	unsafe "unsafe"
 )
 
 type Legacy struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState            `protogen:"open.v1"`
+	F1            *proto2_20160225_2fc053c5.Message `protobuf:"bytes,1,opt,name=f1,proto3" json:"f1,omitempty"`
+	F2            *proto3_20160225_2fc053c5.Message `protobuf:"bytes,2,opt,name=f2,proto3" json:"f2,omitempty"`
+	F3            *proto2_20160519_a4ab9ec5.Message `protobuf:"bytes,3,opt,name=f3,proto3" json:"f3,omitempty"`
+	F4            *proto3_20160519_a4ab9ec5.Message `protobuf:"bytes,4,opt,name=f4,proto3" json:"f4,omitempty"`
+	F5            *proto2_20180125_92554152.Message `protobuf:"bytes,5,opt,name=f5,proto3" json:"f5,omitempty"`
+	F6            *proto3_20180125_92554152.Message `protobuf:"bytes,6,opt,name=f6,proto3" json:"f6,omitempty"`
+	F7            *proto2_20180430_b4deda09.Message `protobuf:"bytes,7,opt,name=f7,proto3" json:"f7,omitempty"`
+	F8            *proto3_20180430_b4deda09.Message `protobuf:"bytes,8,opt,name=f8,proto3" json:"f8,omitempty"`
+	F9            *proto2_20180814_aa810b61.Message `protobuf:"bytes,9,opt,name=f9,proto3" json:"f9,omitempty"`
+	F10           *proto3_20180814_aa810b61.Message `protobuf:"bytes,10,opt,name=f10,proto3" json:"f10,omitempty"`
+	F11           *proto2_20190205_c823c79e.Message `protobuf:"bytes,11,opt,name=f11,proto3" json:"f11,omitempty"`
+	F12           *proto3_20190205_c823c79e.Message `protobuf:"bytes,12,opt,name=f12,proto3" json:"f12,omitempty"`
 	unknownFields protoimpl.UnknownFields
-
-	F1  *proto2_20160225_2fc053c5.Message `protobuf:"bytes,1,opt,name=f1,proto3" json:"f1,omitempty"`
-	F2  *proto3_20160225_2fc053c5.Message `protobuf:"bytes,2,opt,name=f2,proto3" json:"f2,omitempty"`
-	F3  *proto2_20160519_a4ab9ec5.Message `protobuf:"bytes,3,opt,name=f3,proto3" json:"f3,omitempty"`
-	F4  *proto3_20160519_a4ab9ec5.Message `protobuf:"bytes,4,opt,name=f4,proto3" json:"f4,omitempty"`
-	F5  *proto2_20180125_92554152.Message `protobuf:"bytes,5,opt,name=f5,proto3" json:"f5,omitempty"`
-	F6  *proto3_20180125_92554152.Message `protobuf:"bytes,6,opt,name=f6,proto3" json:"f6,omitempty"`
-	F7  *proto2_20180430_b4deda09.Message `protobuf:"bytes,7,opt,name=f7,proto3" json:"f7,omitempty"`
-	F8  *proto3_20180430_b4deda09.Message `protobuf:"bytes,8,opt,name=f8,proto3" json:"f8,omitempty"`
-	F9  *proto2_20180814_aa810b61.Message `protobuf:"bytes,9,opt,name=f9,proto3" json:"f9,omitempty"`
-	F10 *proto3_20180814_aa810b61.Message `protobuf:"bytes,10,opt,name=f10,proto3" json:"f10,omitempty"`
-	F11 *proto2_20190205_c823c79e.Message `protobuf:"bytes,11,opt,name=f11,proto3" json:"f11,omitempty"`
-	F12 *proto3_20190205_c823c79e.Message `protobuf:"bytes,12,opt,name=f12,proto3" json:"f12,omitempty"`
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Legacy) Reset() {
@@ -161,7 +161,7 @@ func (x *Legacy) GetF12() *proto3_20190205_c823c79e.Message {
 
 var File_internal_testprotos_legacy_legacy_proto protoreflect.FileDescriptor
 
-var file_internal_testprotos_legacy_legacy_proto_rawDesc = []byte{
+var file_internal_testprotos_legacy_legacy_proto_rawDesc = string([]byte{
 	0x0a, 0x27, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x6c, 0x65, 0x67, 0x61, 0x63, 0x79, 0x2f, 0x6c, 0x65, 0x67,
 	0x61, 0x63, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x11, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
@@ -264,16 +264,16 @@ var file_internal_testprotos_legacy_legacy_proto_rawDesc = []byte{
 	0x72, 0x67, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x69, 0x6e, 0x74, 0x65,
 	0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f,
 	0x6c, 0x65, 0x67, 0x61, 0x63, 0x79, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
-}
+})
 
 var (
 	file_internal_testprotos_legacy_legacy_proto_rawDescOnce sync.Once
-	file_internal_testprotos_legacy_legacy_proto_rawDescData = file_internal_testprotos_legacy_legacy_proto_rawDesc
+	file_internal_testprotos_legacy_legacy_proto_rawDescData []byte
 )
 
 func file_internal_testprotos_legacy_legacy_proto_rawDescGZIP() []byte {
 	file_internal_testprotos_legacy_legacy_proto_rawDescOnce.Do(func() {
-		file_internal_testprotos_legacy_legacy_proto_rawDescData = protoimpl.X.CompressGZIP(file_internal_testprotos_legacy_legacy_proto_rawDescData)
+		file_internal_testprotos_legacy_legacy_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_internal_testprotos_legacy_legacy_proto_rawDesc), len(file_internal_testprotos_legacy_legacy_proto_rawDesc)))
 	})
 	return file_internal_testprotos_legacy_legacy_proto_rawDescData
 }
@@ -323,7 +323,7 @@ func file_internal_testprotos_legacy_legacy_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_internal_testprotos_legacy_legacy_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_testprotos_legacy_legacy_proto_rawDesc), len(file_internal_testprotos_legacy_legacy_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
@@ -334,7 +334,6 @@ func file_internal_testprotos_legacy_legacy_proto_init() {
 		MessageInfos:      file_internal_testprotos_legacy_legacy_proto_msgTypes,
 	}.Build()
 	File_internal_testprotos_legacy_legacy_proto = out.File
-	file_internal_testprotos_legacy_legacy_proto_rawDesc = nil
 	file_internal_testprotos_legacy_legacy_proto_goTypes = nil
 	file_internal_testprotos_legacy_legacy_proto_depIdxs = nil
 }

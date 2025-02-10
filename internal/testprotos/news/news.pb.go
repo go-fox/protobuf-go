@@ -14,6 +14,7 @@ import (
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
+	unsafe "unsafe"
 )
 
 type Article_Status int32
@@ -66,17 +67,16 @@ func (Article_Status) EnumDescriptor() ([]byte, []int) {
 }
 
 type Article struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Author        string                 `protobuf:"bytes,1,opt,name=author,proto3" json:"author,omitempty"`
+	Date          *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=date,proto3" json:"date,omitempty"`
+	Title         string                 `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
+	Content       string                 `protobuf:"bytes,4,opt,name=content,proto3" json:"content,omitempty"`
+	Status        Article_Status         `protobuf:"varint,8,opt,name=status,proto3,enum=google.golang.org.Article_Status" json:"status,omitempty"`
+	Tags          []string               `protobuf:"bytes,7,rep,name=tags,proto3" json:"tags,omitempty"`
+	Attachments   []*anypb.Any           `protobuf:"bytes,6,rep,name=attachments,proto3" json:"attachments,omitempty"`
 	unknownFields protoimpl.UnknownFields
-
-	Author      string                 `protobuf:"bytes,1,opt,name=author,proto3" json:"author,omitempty"`
-	Date        *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=date,proto3" json:"date,omitempty"`
-	Title       string                 `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
-	Content     string                 `protobuf:"bytes,4,opt,name=content,proto3" json:"content,omitempty"`
-	Status      Article_Status         `protobuf:"varint,8,opt,name=status,proto3,enum=google.golang.org.Article_Status" json:"status,omitempty"`
-	Tags        []string               `protobuf:"bytes,7,rep,name=tags,proto3" json:"tags,omitempty"`
-	Attachments []*anypb.Any           `protobuf:"bytes,6,rep,name=attachments,proto3" json:"attachments,omitempty"`
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Article) Reset() {
@@ -159,12 +159,11 @@ func (x *Article) GetAttachments() []*anypb.Any {
 }
 
 type BinaryAttachment struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Data          []byte                 `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
-
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Data []byte `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *BinaryAttachment) Reset() {
@@ -212,12 +211,11 @@ func (x *BinaryAttachment) GetData() []byte {
 }
 
 type KeyValueAttachment struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Data          map[string]string      `protobuf:"bytes,2,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
-
-	Name string            `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Data map[string]string `protobuf:"bytes,2,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *KeyValueAttachment) Reset() {
@@ -266,7 +264,7 @@ func (x *KeyValueAttachment) GetData() map[string]string {
 
 var File_internal_testprotos_news_news_proto protoreflect.FileDescriptor
 
-var file_internal_testprotos_news_news_proto_rawDesc = []byte{
+var file_internal_testprotos_news_news_proto_rawDesc = string([]byte{
 	0x0a, 0x23, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x6e, 0x65, 0x77, 0x73, 0x2f, 0x6e, 0x65, 0x77, 0x73, 0x2e,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x11, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f,
@@ -313,16 +311,16 @@ var file_internal_testprotos_news_news_proto_rawDesc = []byte{
 	0x62, 0x75, 0x66, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x74, 0x65, 0x73,
 	0x74, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x6e, 0x65, 0x77, 0x73, 0x62, 0x06, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x33,
-}
+})
 
 var (
 	file_internal_testprotos_news_news_proto_rawDescOnce sync.Once
-	file_internal_testprotos_news_news_proto_rawDescData = file_internal_testprotos_news_news_proto_rawDesc
+	file_internal_testprotos_news_news_proto_rawDescData []byte
 )
 
 func file_internal_testprotos_news_news_proto_rawDescGZIP() []byte {
 	file_internal_testprotos_news_news_proto_rawDescOnce.Do(func() {
-		file_internal_testprotos_news_news_proto_rawDescData = protoimpl.X.CompressGZIP(file_internal_testprotos_news_news_proto_rawDescData)
+		file_internal_testprotos_news_news_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_internal_testprotos_news_news_proto_rawDesc), len(file_internal_testprotos_news_news_proto_rawDesc)))
 	})
 	return file_internal_testprotos_news_news_proto_rawDescData
 }
@@ -359,7 +357,7 @@ func file_internal_testprotos_news_news_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_internal_testprotos_news_news_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_testprotos_news_news_proto_rawDesc), len(file_internal_testprotos_news_news_proto_rawDesc)),
 			NumEnums:      1,
 			NumMessages:   4,
 			NumExtensions: 0,
@@ -371,7 +369,6 @@ func file_internal_testprotos_news_news_proto_init() {
 		MessageInfos:      file_internal_testprotos_news_news_proto_msgTypes,
 	}.Build()
 	File_internal_testprotos_news_news_proto = out.File
-	file_internal_testprotos_news_news_proto_rawDesc = nil
 	file_internal_testprotos_news_news_proto_goTypes = nil
 	file_internal_testprotos_news_news_proto_depIdxs = nil
 }

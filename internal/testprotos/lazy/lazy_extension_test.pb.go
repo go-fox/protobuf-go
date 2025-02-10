@@ -13,6 +13,7 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+	unsafe "unsafe"
 )
 
 type FlyingFoxSpecies int32
@@ -159,11 +160,10 @@ func (PipistrelleSpecies) EnumDescriptor() ([]byte, []int) {
 
 // This message contains a message set.
 type Holder struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Data          *messagesetpb.MessageSet `protobuf:"bytes,1,opt,name=data" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
-
-	Data *messagesetpb.MessageSet `protobuf:"bytes,1,opt,name=data" json:"data,omitempty"`
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Holder) Reset() {
@@ -205,11 +205,10 @@ func (x *Holder) GetData() *messagesetpb.MessageSet {
 
 // This message may be inserted into a message set.
 type Rabbit struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          *string                `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
-
-	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Rabbit) Reset() {
@@ -250,11 +249,10 @@ func (x *Rabbit) GetName() string {
 }
 
 type FlyingFox struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Species       *FlyingFoxSpecies      `protobuf:"varint,1,opt,name=species,enum=lazy_extension_test.FlyingFoxSpecies" json:"species,omitempty"`
 	unknownFields protoimpl.UnknownFields
-
-	Species *FlyingFoxSpecies `protobuf:"varint,1,opt,name=species,enum=lazy_extension_test.FlyingFoxSpecies" json:"species,omitempty"`
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *FlyingFox) Reset() {
@@ -295,12 +293,11 @@ func (x *FlyingFox) GetSpecies() FlyingFoxSpecies {
 }
 
 type Tree struct {
-	state           protoimpl.MessageState
-	sizeCache       protoimpl.SizeCache
-	unknownFields   protoimpl.UnknownFields
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Eucalyptus      *bool                  `protobuf:"varint,1,opt,name=eucalyptus" json:"eucalyptus,omitempty"`
 	extensionFields protoimpl.ExtensionFields
-
-	Eucalyptus *bool `protobuf:"varint,1,opt,name=eucalyptus" json:"eucalyptus,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *Tree) Reset() {
@@ -341,11 +338,10 @@ func (x *Tree) GetEucalyptus() bool {
 }
 
 type Pipistrelle struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Species       *PipistrelleSpecies    `protobuf:"varint,1,opt,name=species,enum=lazy_extension_test.PipistrelleSpecies" json:"species,omitempty"`
 	unknownFields protoimpl.UnknownFields
-
-	Species *PipistrelleSpecies `protobuf:"varint,1,opt,name=species,enum=lazy_extension_test.PipistrelleSpecies" json:"species,omitempty"`
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Pipistrelle) Reset() {
@@ -386,11 +382,10 @@ func (x *Pipistrelle) GetSpecies() PipistrelleSpecies {
 }
 
 type Pipistrelles struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Species       *PipistrelleSpecies    `protobuf:"varint,1,opt,name=species,enum=lazy_extension_test.PipistrelleSpecies" json:"species,omitempty"`
 	unknownFields protoimpl.UnknownFields
-
-	Species *PipistrelleSpecies `protobuf:"varint,1,opt,name=species,enum=lazy_extension_test.PipistrelleSpecies" json:"species,omitempty"`
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Pipistrelles) Reset() {
@@ -432,9 +427,9 @@ func (x *Pipistrelles) GetSpecies() PipistrelleSpecies {
 
 // And the ugly version that is not encouraged
 type BatNest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *BatNest) Reset() {
@@ -570,7 +565,7 @@ var (
 
 var File_internal_testprotos_lazy_lazy_extension_test_proto protoreflect.FileDescriptor
 
-var file_internal_testprotos_lazy_lazy_extension_test_proto_rawDesc = []byte{
+var file_internal_testprotos_lazy_lazy_extension_test_proto_rawDesc = string([]byte{
 	0x0a, 0x32, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x6c, 0x61, 0x7a, 0x79, 0x2f, 0x6c, 0x61, 0x7a, 0x79, 0x5f,
 	0x65, 0x78, 0x74, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e, 0x5f, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x70,
@@ -674,16 +669,16 @@ var file_internal_testprotos_lazy_lazy_extension_test_proto_rawDesc = []byte{
 	0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f,
 	0x74, 0x65, 0x73, 0x74, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x6c, 0x61, 0x7a, 0x79,
-}
+})
 
 var (
 	file_internal_testprotos_lazy_lazy_extension_test_proto_rawDescOnce sync.Once
-	file_internal_testprotos_lazy_lazy_extension_test_proto_rawDescData = file_internal_testprotos_lazy_lazy_extension_test_proto_rawDesc
+	file_internal_testprotos_lazy_lazy_extension_test_proto_rawDescData []byte
 )
 
 func file_internal_testprotos_lazy_lazy_extension_test_proto_rawDescGZIP() []byte {
 	file_internal_testprotos_lazy_lazy_extension_test_proto_rawDescOnce.Do(func() {
-		file_internal_testprotos_lazy_lazy_extension_test_proto_rawDescData = protoimpl.X.CompressGZIP(file_internal_testprotos_lazy_lazy_extension_test_proto_rawDescData)
+		file_internal_testprotos_lazy_lazy_extension_test_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_internal_testprotos_lazy_lazy_extension_test_proto_rawDesc), len(file_internal_testprotos_lazy_lazy_extension_test_proto_rawDesc)))
 	})
 	return file_internal_testprotos_lazy_lazy_extension_test_proto_rawDescData
 }
@@ -739,7 +734,7 @@ func file_internal_testprotos_lazy_lazy_extension_test_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_internal_testprotos_lazy_lazy_extension_test_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_testprotos_lazy_lazy_extension_test_proto_rawDesc), len(file_internal_testprotos_lazy_lazy_extension_test_proto_rawDesc)),
 			NumEnums:      2,
 			NumMessages:   7,
 			NumExtensions: 9,
@@ -752,7 +747,6 @@ func file_internal_testprotos_lazy_lazy_extension_test_proto_init() {
 		ExtensionInfos:    file_internal_testprotos_lazy_lazy_extension_test_proto_extTypes,
 	}.Build()
 	File_internal_testprotos_lazy_lazy_extension_test_proto = out.File
-	file_internal_testprotos_lazy_lazy_extension_test_proto_rawDesc = nil
 	file_internal_testprotos_lazy_lazy_extension_test_proto_goTypes = nil
 	file_internal_testprotos_lazy_lazy_extension_test_proto_depIdxs = nil
 }
