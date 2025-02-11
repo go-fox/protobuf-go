@@ -17,8 +17,6 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/go-fox/fox/api/annotations"
-
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/internal/editionssupport"
 	"google.golang.org/protobuf/internal/encoding/tag"
@@ -498,20 +496,20 @@ func genMessageField(g *protogen.GeneratedFile, f *fileInfo, m *messageInfo, fie
 		{"json", fieldJSONTagValue(field)},
 		{"query", fieldJSONTagValue(field)},
 	}
-	s, ok := proto.GetExtension(field.Desc.Options(), annotations.E_Form).(string)
+	s, ok := proto.GetExtension(field.Desc.Options(), E_Form).(string)
 	if ok && len(s) > 0 {
 		tags = append(tags, [2]string{"form", s})
 	}
-	s, ok = proto.GetExtension(field.Desc.Options(), annotations.E_Query).(string)
+	s, ok = proto.GetExtension(field.Desc.Options(), E_Query).(string)
 	if ok && len(s) > 0 {
 		tags = append(tags, [2]string{"query", s})
 	}
 
-	s, ok = proto.GetExtension(field.Desc.Options(), annotations.E_Header).(string)
+	s, ok = proto.GetExtension(field.Desc.Options(), E_Header).(string)
 	if ok && len(s) > 0 {
 		tags = append(tags, [2]string{"header", s})
 	}
-	s, ok = proto.GetExtension(field.Desc.Options(), annotations.E_Path).(string)
+	s, ok = proto.GetExtension(field.Desc.Options(), E_Path).(string)
 	if ok && len(s) > 0 {
 		tags = append(tags, [2]string{"path", s})
 	}
