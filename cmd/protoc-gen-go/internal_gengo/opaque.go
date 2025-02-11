@@ -10,12 +10,12 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"google.golang.org/protobuf/compiler/protogen"
-	"google.golang.org/protobuf/internal/genid"
-	"google.golang.org/protobuf/proto"
-	"google.golang.org/protobuf/reflect/protoreflect"
+	"github.com/go-fox/protobuf-go/compiler/protogen"
+	"github.com/go-fox/protobuf-go/internal/genid"
+	"github.com/go-fox/protobuf-go/proto"
+	"github.com/go-fox/protobuf-go/reflect/protoreflect"
 
-	"google.golang.org/protobuf/types/descriptorpb"
+	"github.com/go-fox/protobuf-go/types/descriptorpb"
 )
 
 func opaqueGenMessageHook(g *protogen.GeneratedFile, f *fileInfo, message *messageInfo) bool {

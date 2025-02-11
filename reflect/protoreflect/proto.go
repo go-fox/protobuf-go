@@ -136,8 +136,8 @@ import (
 	"fmt"
 	"strings"
 
-	"google.golang.org/protobuf/encoding/protowire"
-	"google.golang.org/protobuf/internal/pragma"
+	"github.com/go-fox/protobuf-go/encoding/protowire"
+	"github.com/go-fox/protobuf-go/internal/pragma"
 )
 
 type doNotImplement pragma.DoNotImplement

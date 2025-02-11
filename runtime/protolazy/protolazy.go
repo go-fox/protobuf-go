@@ -13,7 +13,7 @@
 package protolazy
 
 import (
-	"google.golang.org/protobuf/internal/impl"
+	"github.com/go-fox/protobuf-go/internal/impl"
 )
 
 // Disable disables lazy unmarshaling of opaque messages.

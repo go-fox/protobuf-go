@@ -10,12 +10,12 @@ import (
 	"testing"
 	"time"
 
+	"github.com/go-fox/protobuf-go/internal/detrand"
+	"github.com/go-fox/protobuf-go/testing/protocmp"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
-	"google.golang.org/protobuf/internal/detrand"
-	"google.golang.org/protobuf/testing/protocmp"
 
-	tspb "google.golang.org/protobuf/types/known/timestamppb"
+	tspb "github.com/go-fox/protobuf-go/types/known/timestamppb"
 )
 
 func init() {

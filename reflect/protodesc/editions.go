@@ -9,13 +9,13 @@ import (
 	"os"
 	"sync"
 
-	"google.golang.org/protobuf/internal/editiondefaults"
-	"google.golang.org/protobuf/internal/filedesc"
-	"google.golang.org/protobuf/internal/genid"
-	"google.golang.org/protobuf/proto"
-	"google.golang.org/protobuf/reflect/protoreflect"
-	"google.golang.org/protobuf/types/descriptorpb"
-	"google.golang.org/protobuf/types/gofeaturespb"
+	"github.com/go-fox/protobuf-go/internal/editiondefaults"
+	"github.com/go-fox/protobuf-go/internal/filedesc"
+	"github.com/go-fox/protobuf-go/internal/genid"
+	"github.com/go-fox/protobuf-go/proto"
+	"github.com/go-fox/protobuf-go/reflect/protoreflect"
+	"github.com/go-fox/protobuf-go/types/descriptorpb"
+	"github.com/go-fox/protobuf-go/types/gofeaturespb"
 )
 
 var defaults = &descriptorpb.FeatureSetDefaults{}

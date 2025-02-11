@@ -11,14 +11,14 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"google.golang.org/protobuf/internal/descfmt"
-	"google.golang.org/protobuf/internal/descopts"
-	"google.golang.org/protobuf/internal/encoding/defval"
-	"google.golang.org/protobuf/internal/encoding/messageset"
-	"google.golang.org/protobuf/internal/genid"
-	"google.golang.org/protobuf/internal/pragma"
-	"google.golang.org/protobuf/internal/strs"
-	"google.golang.org/protobuf/reflect/protoreflect"
+	"github.com/go-fox/protobuf-go/internal/descfmt"
+	"github.com/go-fox/protobuf-go/internal/descopts"
+	"github.com/go-fox/protobuf-go/internal/encoding/defval"
+	"github.com/go-fox/protobuf-go/internal/encoding/messageset"
+	"github.com/go-fox/protobuf-go/internal/genid"
+	"github.com/go-fox/protobuf-go/internal/pragma"
+	"github.com/go-fox/protobuf-go/internal/strs"
+	"github.com/go-fox/protobuf-go/reflect/protoreflect"
 )
 
 // Edition is an Enum for proto2.Edition

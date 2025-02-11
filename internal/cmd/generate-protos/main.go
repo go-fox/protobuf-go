@@ -21,10 +21,10 @@ import (
 	"strconv"
 	"strings"
 
-	gengo "google.golang.org/protobuf/cmd/protoc-gen-go/internal_gengo"
-	"google.golang.org/protobuf/compiler/protogen"
-	"google.golang.org/protobuf/internal/detrand"
-	"google.golang.org/protobuf/internal/editionssupport"
+	gengo "github.com/go-fox/protobuf-go/cmd/protoc-gen-go/internal_gengo"
+	"github.com/go-fox/protobuf-go/compiler/protogen"
+	"github.com/go-fox/protobuf-go/internal/detrand"
+	"github.com/go-fox/protobuf-go/internal/editionssupport"
 )
 
 func init() {

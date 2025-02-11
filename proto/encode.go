@@ -8,14 +8,14 @@ import (
 	"errors"
 	"fmt"
 
-	"google.golang.org/protobuf/encoding/protowire"
-	"google.golang.org/protobuf/internal/encoding/messageset"
-	"google.golang.org/protobuf/internal/order"
-	"google.golang.org/protobuf/internal/pragma"
-	"google.golang.org/protobuf/reflect/protoreflect"
-	"google.golang.org/protobuf/runtime/protoiface"
+	"github.com/go-fox/protobuf-go/encoding/protowire"
+	"github.com/go-fox/protobuf-go/internal/encoding/messageset"
+	"github.com/go-fox/protobuf-go/internal/order"
+	"github.com/go-fox/protobuf-go/internal/pragma"
+	"github.com/go-fox/protobuf-go/reflect/protoreflect"
+	"github.com/go-fox/protobuf-go/runtime/protoiface"
 
-	protoerrors "google.golang.org/protobuf/internal/errors"
+	protoerrors "github.com/go-fox/protobuf-go/internal/errors"
 )
 
 // MarshalOptions configures the marshaler.
