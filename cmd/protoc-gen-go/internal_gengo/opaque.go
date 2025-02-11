@@ -12,8 +12,8 @@ import (
 
 	"github.com/go-fox/fox/api/annotations"
 
-	"github.com/go-fox/protobuf-go/internal/genid"
 	"google.golang.org/protobuf/compiler/protogen"
+	"google.golang.org/protobuf/internal/genid"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 

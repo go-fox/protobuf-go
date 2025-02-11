@@ -6,7 +6,7 @@ package main
 
 import (
 	"bytes"
-	"github.com/go-fox/protobuf-go/internal/genid"
+	"google.golang.org/protobuf/internal/genid"
 	"os"
 	"testing"
 
