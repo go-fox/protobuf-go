@@ -1,6 +1,6 @@
 package main
 
-import "google.golang.org/protobuf/internal/version"
+import "github.com/go-fox/protobuf-go/internal/version"
 
 // Version return version
 func Version() string {

@@ -19,12 +19,12 @@ import (
 
 	"github.com/go-fox/fox/api/annotations"
 
+	"github.com/go-fox/protobuf-go/internal/editionssupport"
+	"github.com/go-fox/protobuf-go/internal/encoding/tag"
+	"github.com/go-fox/protobuf-go/internal/filedesc"
+	"github.com/go-fox/protobuf-go/internal/genid"
+	"github.com/go-fox/protobuf-go/internal/version"
 	"google.golang.org/protobuf/compiler/protogen"
-	"google.golang.org/protobuf/internal/editionssupport"
-	"google.golang.org/protobuf/internal/encoding/tag"
-	"google.golang.org/protobuf/internal/filedesc"
-	"google.golang.org/protobuf/internal/genid"
-	"google.golang.org/protobuf/internal/version"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/runtime/protoimpl"

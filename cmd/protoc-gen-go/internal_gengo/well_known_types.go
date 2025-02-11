@@ -7,8 +7,8 @@ package internal_gengo
 import (
 	"strings"
 
+	"github.com/go-fox/protobuf-go/internal/genid"
 	"google.golang.org/protobuf/compiler/protogen"
-	"google.golang.org/protobuf/internal/genid"
 )
 
 // Specialized support for well-known types are hard-coded into the generator
