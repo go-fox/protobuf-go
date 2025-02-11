@@ -11,6 +11,7 @@ import (
 	"go/parser"
 	"go/token"
 	"math"
+	"os"
 	"strconv"
 	"strings"
 	"unicode"
@@ -18,12 +19,12 @@ import (
 
 	"github.com/go-fox/fox/api/annotations"
 
-	"github.com/go-fox/protobuf-go/internal/editionssupport"
-	"github.com/go-fox/protobuf-go/internal/encoding/tag"
-	"github.com/go-fox/protobuf-go/internal/filedesc"
-	"github.com/go-fox/protobuf-go/internal/genid"
-	"github.com/go-fox/protobuf-go/internal/version"
 	"google.golang.org/protobuf/compiler/protogen"
+	"google.golang.org/protobuf/internal/editionssupport"
+	"google.golang.org/protobuf/internal/encoding/tag"
+	"google.golang.org/protobuf/internal/filedesc"
+	"google.golang.org/protobuf/internal/genid"
+	"google.golang.org/protobuf/internal/version"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/runtime/protoimpl"
@@ -451,6 +452,11 @@ func genMessageInternalFields(g *protogen.GeneratedFile, f *fileInfo, m *message
 	}
 }
 
+// printf 打印日志
+func printf(msg string, arg ...interface{}) {
+	fmt.Fprintf(os.Stderr, msg, arg...)
+}
+
 func genMessageField(g *protogen.GeneratedFile, f *fileInfo, m *messageInfo, field *protogen.Field, sf *structFields) {
 	if oneof := field.Oneof; oneof != nil && !oneof.Desc.IsSynthetic() {
 		// It would be a bit simpler to iterate over the oneofs below,
@@ -490,8 +496,8 @@ func genMessageField(g *protogen.GeneratedFile, f *fileInfo, m *messageInfo, fie
 	tags := structTags{
 		{"protobuf", fieldProtobufTagValue(field)},
 		{"json", fieldJSONTagValue(field)},
+		{"query", fieldJSONTagValue(field)},
 	}
-
 	s, ok := proto.GetExtension(field.Desc.Options(), annotations.E_Form).(string)
 	if ok && len(s) > 0 {
 		tags = append(tags, [2]string{"form", s})
@@ -500,6 +506,7 @@ func genMessageField(g *protogen.GeneratedFile, f *fileInfo, m *messageInfo, fie
 	if ok && len(s) > 0 {
 		tags = append(tags, [2]string{"query", s})
 	}
+
 	s, ok = proto.GetExtension(field.Desc.Options(), annotations.E_Header).(string)
 	if ok && len(s) > 0 {
 		tags = append(tags, [2]string{"header", s})
