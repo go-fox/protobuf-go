@@ -8,8 +8,8 @@ package builder_test
 import (
 	"testing"
 
-	testhybridpb "github.com/go-fox/protobuf-go/internal/testprotos/testeditions/testeditions_hybrid"
-	testopaquepb "github.com/go-fox/protobuf-go/internal/testprotos/testeditions/testeditions_opaque"
+	testhybridpb "google.golang.org/protobuf/internal/testprotos/testeditions/testeditions_hybrid"
+	testopaquepb "google.golang.org/protobuf/internal/testprotos/testeditions/testeditions_opaque"
 	"google.golang.org/protobuf/proto"
 )
 

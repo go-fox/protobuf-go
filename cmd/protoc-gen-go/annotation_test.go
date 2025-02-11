@@ -6,12 +6,12 @@ package main
 
 import (
 	"bytes"
+	"google.golang.org/protobuf/internal/genid"
 	"os"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/prototext"
-	"google.golang.org/protobuf/intern
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/testing/protocmp"
 

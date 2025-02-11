@@ -7,7 +7,7 @@ package main
 import (
 	"testing"
 
-	"github.com/go-fox/protobuf-go/internal/filedesc"
+	"google.golang.org/protobuf/internal/filedesc"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/reflect/protoregistry"
 )
